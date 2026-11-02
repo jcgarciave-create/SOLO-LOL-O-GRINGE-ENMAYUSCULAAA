@@ -1,2 +1,2 @@
-# SOLO-LOL-O-GRINGE-ENMAYUSCULAAA
+· mio o de nadie?
 LEE EL TITULO
