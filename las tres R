@@ -1,0 +1,45 @@
+import os
+import random
+import discord
+from discord.ext import commands
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix="$", intents=intents)
+
+
+@bot.event
+async def on_ready():
+    print("Bot de contaminación conectado")
+
+@bot.command()
+async def start(ctx):
+    await ctx.send("¡Hola! Soy un bot que te informa sobre la contaminación ambiental.")
+    await ctx.send("Usa !contaminacion para aprender sobre el tema.")
+
+@bot.command()
+async def contaminacion(ctx):
+    mensaje = (
+        "La contaminación ambiental es la presencia de sustancias nocivas en el medio ambiente, "
+        "como el aire, el agua y el suelo. Estas sustancias pueden ser químicas, físicas o biológicas, "
+        "y pueden tener efectos negativos en la salud humana y en los ecosistemas."
+    )
+    await ctx.send(mensaje)
+
+@bot.command()
+async def consejo(ctx):
+    await ctx.send("cosejo: no uses cosas in necesarias, como el plástico, para ayudar a reducir la contaminación ambiental, no botar basuraaaaaaaaaaaaaaaa .")
+    
+
+@bot.command()
+async def mem_R(ctx):
+    archivos = os.listdir("images R3")
+    foto = random.randint(0, len(archivos) - 1)
+    with open(f'images/{foto}', 'rb') as f:
+        # ¡Vamos a almacenar el archivo de la biblioteca Discord convertido en esta variable!
+        picture = discord.File(f)
+    # A continuación, podemos enviar este archivo como parámetro.
+    await ctx.send(file=picture)
+
+bot.run("tu token aqui")
